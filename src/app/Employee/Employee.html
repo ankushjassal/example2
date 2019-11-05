@@ -1,0 +1,78 @@
+<h1>Child component: {{Carname}}</h1>
+<input type="text" #ccomponent (keyup)="onChange(ccomponent.value)" placeholder="@output data" />
+<div class="col-md-4">
+<p>
+<my-product></my-product></p>
+</div>
+<div class="container col-md-4">
+<h2>Employee data</h2>
+<form>
+<div class="form-group">
+<div class="col-md-3 col-sm-3">
+<label for="empId">Employee Id</label>
+</div>
+
+<input type="text" id="EmployeeId" pattern="[0-9]" maxlength="10" minlength="4" required [(ngModel)]="model.empId" name="id" #ID="ngModel" />
+<div *ngIf="ID.errors && (ID.dirty || ID.touched)" class="alert alert-danger">
+<div [hidden]="!ID.errors.required">Id required</div>
+<div [hidden]="!ID.errors.minlength">Id must be more that 4 and less than 10</div>
+</div>
+</div>
+<div class="form-group">
+<div class="col-md-3 col-sm-3">
+<label for="empname">Employee Name</label>
+</div>
+<input type="text" id="EmployeeName" required [(ngModel)]="model.empname" name="name" #Name="ngModel" />
+
+</div>
+<div class="form-group">
+<div class="col-md-3 col-sm-3">
+<label for="City">City</label>
+</div>
+<input type="text" id="city" required [(ngModel)]="model.City" name="city" #City="ngModel" />
+</div>
+<div class="col-md-3"></div>
+<div><button class="btn btn-success text-center">Submit</button></div>
+
+</form>
+<h3>Data you enter:- "ID:-" {{model.empId | uppercase}}</h3>
+<h3>Data you enter:- "Name:-" {{model.empname | lowercase}}</h3>
+<h3>Data you enter:- "City:-" {{model.City}}</h3>
+<input [value]="name" (input)="name=$event.target.value">{{name}}
+<button (Click)="OnClick()">Click me</button>
+{{clickMessage}}
+</div>
+<div class="col-md-4">
+<h2>{{welcome}}</h2>
+	<table class="table table-striped">
+	<tr>
+		<th>S.No</th>
+		<th>Game</th>
+		<th>Platform</th>
+		<th>Release</th>
+	</tr>
+	<tr *ngFor="let game of games; let i = index">
+		<td>{{i + 1}}</td>
+		<td>{{game.game}}</td>
+		<td>{{game.platform}}</td>
+		<td>{{game.release}}</td>
+	</tr>
+	</table>
+</div>
+<div style="width: 500px;">
+<h2>{{title1}}</h2>
+<table>
+	<tr>
+		<th>Color</th>
+		<th>Category</th>
+		<th>Type</th>
+		<th>Code</th>
+	</tr>
+	<tr *ngFor="let colors of arrColor">
+		<td>{{colors.color}}</td>
+		<td>{{colors.category}}</td>
+		<td>{{colors.type}}</td>
+		<td>{{colors.code.hex}}</td>
+	</tr>
+</table>
+</div>
